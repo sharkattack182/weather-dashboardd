@@ -17,7 +17,6 @@ $("#searchBtn").on("click", function () {
 function showWeather() {
     var city = $("#city").val()
     var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=" + apiKey;
-
     $.ajax({
         url: queryURL,
         method: "GET",
@@ -36,7 +35,21 @@ function showWeather() {
         jumbotron.append(tempText);
         jumbotron.append(humidity);
         jumbotron.append(wind);
+
+        var queryUVIurl = "https://api.openweathermap.org/data/2.5/uvi?lat=" + response.coord.lat + "&lon=" + response.coord.lon + "&appid=" + apiKey;
+
+        $.ajax({
+            url: queryUVIurl,
+            mathod: "GET",
+        }).then(function (UVIresponse) {
+            var UVI = $("<div>").text("UV Index: " + UVIresponse.value)
+            jumbotron.append(UVI);
+        })
     })
+
+
+
+
 }
 
 function generateCards() {
@@ -60,4 +73,6 @@ function generateCards() {
         })
 
 }
+
+
 
