@@ -7,6 +7,7 @@ var prevSearch = JSON.parse(localStorage.getItem("city")) || []; //calls item fr
 $("#searchBtn").on("click", function () {
     var city = $("#city").val()
     console.log(city) 
+    generateCards();
     showWeather(city)
 })
 
@@ -36,11 +37,14 @@ function showWeather() {
     })
 }
 
+function generateCards() {
 
-$.ajax("https://api.openweathermap.org/data/2.5/forecast?q=Charlotte&appid=23346a4286e014dc1c7ba261140705ca")
+var city = $("#city").val();
+
+$.ajax("https://api.openweathermap.org/data/2.5/forecast?q="+ city +"&appid=23346a4286e014dc1c7ba261140705ca")
 .then(function (response) {
     console.log(response);
-
+    
     var array = response.list;
 
     for (let i = 0; i < array.length; i+=8) {  //made a for loop that loops over the hourly array increased it by 8 to get a differnt day each time
@@ -53,4 +57,5 @@ $.ajax("https://api.openweathermap.org/data/2.5/forecast?q=Charlotte&appid=23346
     }
 })
 
+}
 
