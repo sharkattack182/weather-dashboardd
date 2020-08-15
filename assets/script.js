@@ -5,15 +5,15 @@ var prevSearch = JSON.parse(localStorage.getItem("city")) || []; //calls item fr
 
 //stores search item to local storage
 $("#searchBtn").on("click", function () {
-    prevSearch.push(city)
-    localStorage.setItem("city", JSON.stringify(prevSearch))
+    var city = $("#city").val()
+    console.log(city) 
     showWeather(city)
 })
 
 /// makes the main jumbotron with info adds 
 function showWeather() {
-
-    var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=Charlotte&units=imperial&appid=" + apiKey;
+    var city = $("#city").val()
+    var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city +"&units=imperial&appid=" + apiKey;
 
     $.ajax({
         url: queryURL,
@@ -52,3 +52,5 @@ $.ajax("https://api.openweathermap.org/data/2.5/forecast?q=Charlotte&appid=23346
         $("#futureWeather").append(card); //appended the cards to the future weather div 
     }
 })
+
+
