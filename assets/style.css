@@ -22,3 +22,16 @@ header {
     padding: 5px;
     margin: 5px;
 }
+
+.past {
+    width: 100%;
+    border-style: solid;
+    border-color: black;
+    padding: 3px;
+}
+
+.five {
+    display: inline-flex;
+    color: white;
+    position: absolute;
+}

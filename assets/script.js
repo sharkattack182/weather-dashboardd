@@ -4,14 +4,16 @@ var prevSearch = JSON.parse(localStorage.getItem("city")) || []; //calls item fr
 
 
 //stores search item to local storage
-$("#searchBtn").on("click", function () {
-    var city = $("#city").val()
-    console.log(city)
-    prevSearch.push(city)
+ $("#searchBtn").on("click", function () {
+     var location = $("#city").val()
+     console.log(location)
+     prevSearch.push(location)
     localStorage.setItem("weather", JSON.stringify(prevSearch))
-    generateCards();
-    showWeather(city)
-})
+     generateCards();
+     showWeather(location)
+ })
+
+ 
 
 /// makes the main jumbotron with info adds 
 function showWeather() {
@@ -30,6 +32,7 @@ function showWeather() {
         var wind = $("<div>").text("Wind Speed: " + response.wind.speed + ""); // wind
 
         var currentWeatherDiv = $("#currentWeather");
+        var futureWeatherDiv = $("#futureWeather")
         currentWeatherDiv.append(jumbotron);
         jumbotron.append(cityName);
         jumbotron.append(tempText);
@@ -46,10 +49,6 @@ function showWeather() {
             jumbotron.append(UVI);
         })
     })
-
-
-
-
 }
 
 function generateCards() {
