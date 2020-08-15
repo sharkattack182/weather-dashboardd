@@ -5,7 +5,7 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+<link rel="stylesheet" href="assets/style.css">
     
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
@@ -14,12 +14,12 @@
 </head>
 
 <body style="height: 100vh;">
-    <header class="bg-dark text-center">
+    <header class="bg-dark text-center text-light">
         <h1>Weather</h1>
     </header>
     <div class="container-fluid">
-        <div class="row h-100">
-            <div class="col-md-4">
+        <div class="row h-100 bg-danger">
+            <div class="col-md-4 h-100vh">
                 <h2>
                     City:
                 </h2>
@@ -27,7 +27,7 @@
                             class="fas fa-search-plus"></i></button></span>
                 <div class="searchResults"></div>
             </div>
-            <div class="col-md-8 bg-dark">
+            <div class="col-md-8 bg-dark leftside">
                 <div id="currentWeather">
                 </div>
                 <div class="row" id="futureWeather">
