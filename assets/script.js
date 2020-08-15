@@ -1,4 +1,4 @@
-var apiKey = "23346a4286e014dc1c7ba261140705ca"; 
+var apiKey = "23346a4286e014dc1c7ba261140705ca";
 var city = $("#city").val();
 var prevSearch = JSON.parse(localStorage.getItem("city")) || []; //calls item from local storage mac and ryan helped me with this i still cant get it to work 
 
@@ -6,7 +6,9 @@ var prevSearch = JSON.parse(localStorage.getItem("city")) || []; //calls item fr
 //stores search item to local storage
 $("#searchBtn").on("click", function () {
     var city = $("#city").val()
-    console.log(city) 
+    console.log(city)
+    prevSearch.push(city)
+    localStorage.setItem("weather", JSON.stringify(prevSearch))
     generateCards();
     showWeather(city)
 })
@@ -14,7 +16,7 @@ $("#searchBtn").on("click", function () {
 /// makes the main jumbotron with info adds 
 function showWeather() {
     var city = $("#city").val()
-    var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city +"&units=imperial&appid=" + apiKey;
+    var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=" + apiKey;
 
     $.ajax({
         url: queryURL,
@@ -39,23 +41,23 @@ function showWeather() {
 
 function generateCards() {
 
-var city = $("#city").val();
+    var city = $("#city").val();
 
-$.ajax("https://api.openweathermap.org/data/2.5/forecast?q="+ city +"&appid=23346a4286e014dc1c7ba261140705ca")
-.then(function (response) {
-    console.log(response);
-    
-    var array = response.list;
+    $.ajax("https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=23346a4286e014dc1c7ba261140705ca")
+        .then(function (response) {
+            console.log(response);
 
-    for (let i = 0; i < array.length; i+=8) {  //made a for loop that loops over the hourly array increased it by 8 to get a differnt day each time
-        var card = $("<div>").addClass("card bg-danger col-md-2"); // added the cards
-        var date = $("<div>").text(array[i].dt_txt); // added the date
-        var temp = $("<div>").text(array[i].main.temp + "F");  // temp
-        var humidity = $("<div>").text( array[i].main.humidity); /// humidity
-        card.append(date, temp, humidity); //apended the info into the cards
-        $("#futureWeather").append(card); //appended the cards to the future weather div 
-    }
-})
+            var array = response.list;
+
+            for (let i = 0; i < array.length; i += 8) {  //made a for loop that loops over the hourly array increased it by 8 to get a differnt day each time
+                var card = $("<div>").addClass("card bg-danger col-md-2"); // added the cards
+                var date = $("<div>").text(array[i].dt_txt); // added the date
+                var temp = $("<div>").text(array[i].main.temp + "F");  // temp
+                var humidity = $("<div>").text(array[i].main.humidity); /// humidity
+                card.append(date, temp, humidity); //apended the info into the cards
+                $("#futureWeather").append(card); //appended the cards to the future weather div 
+            }
+        })
 
 }
 
