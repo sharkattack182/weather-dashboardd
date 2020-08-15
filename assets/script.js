@@ -3,7 +3,7 @@ var city = $("#city").val();
 var prevSearch = JSON.parse(localStorage.getItem("city")) || []; //calls item from local storage mac and ryan helped me with this i still cant get it to work 
 
 
-//stores search item to local storage
+//stores search item to local storage  for some reason when i try to finsih this it breaks the api it wont let me return anything i asked my clas mates but noone had any answers for me 
  $("#searchBtn").on("click", function () {
      var location = $("#city").val()
      console.log(location)
