@@ -43,7 +43,7 @@ function generateCards() {
 
     var city = $("#city").val();
 
-    $.ajax("https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=23346a4286e014dc1c7ba261140705ca")
+    $.ajax("https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=imperial&appid=23346a4286e014dc1c7ba261140705ca")
         .then(function (response) {
             console.log(response);
 
