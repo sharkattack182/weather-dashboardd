@@ -7,3 +7,4 @@ once I got my api to work it was relativley smooth sailing. I played around with
 As I mentioned this poject was much tougher than anticipated and I look forward to asking my teahcers for help in overcoming these bugs. It just goes to show you never know as much  as you think. 
 
 link to the github version is : https://github.com/sharkattack182/weather-dashboardd
+link to the live version is : https://sharkattack182.github.io/weather-dashboardd/
