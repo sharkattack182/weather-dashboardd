@@ -1,19 +1,44 @@
 var apiKey = "23346a4286e014dc1c7ba261140705ca";
 var city = $("#city").val();
-var prevSearch = JSON.parse(localStorage.getItem("city")) || []; //calls item from local storage mac and ryan helped me with this i still cant get it to work 
+var prevSearch = []
 
+
+ //calls item from local storage mac and ryan helped me with this i still cant get it to work 
+
+window.addEventListener("load", function () {
+    if(localStorage.getItem("weather")){
+        prevSearch = JSON.parse(localStorage.getItem("weather"))
+    
+    } else {
+        prevSearch = []
+    }
+
+
+    console.log(prevSearch)
+    $("#searchResults").empty();
+    for (let i = 0; i < prevSearch.length; i++) {
+        var button = $("<button>");
+        button.text(prevSearch[i]);
+        //button.addClass("btn") 
+        $("#searchResults").prepend(button);
+
+    }
+})
 
 //stores search item to local storage  for some reason when i try to finsih this it breaks the api it wont let me return anything i asked my clas mates but noone had any answers for me 
- $("#searchBtn").on("click", function () {
-     var location = $("#city").val()
-     console.log(location)
-     prevSearch.push(location)
+$("#searchBtn").on("click", function () {
+    var location = $("#city").val()
+    console.log(location)
+    prevSearch.push(location)
     localStorage.setItem("weather", JSON.stringify(prevSearch))
-     generateCards();
-     showWeather(location)
- })
+    generateCards();
+    showWeather(location)
+    var div = $("<button>");
+    div.text(location)
+    $("#searchResults").prepend(div)
+})
 
- 
+
 
 /// makes the main jumbotron with info adds 
 function showWeather() {
